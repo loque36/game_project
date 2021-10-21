@@ -5,7 +5,7 @@ import pygame
 
 from settings import Setting
 
-class AlienInvasion:
+class AquaBlow:
 	"""Класс для управления ресурсами и поведением игры."""
 
 	def __init__(self):
@@ -13,10 +13,11 @@ class AlienInvasion:
 		pygame.init()
 
 		self.settings = Setting()
+		self.bg = pygame.image.load('images/bgr.bmp')
 
 		self.screen = pygame.display.set_mode(
 			(self.settings.screen_width, self.settings.screen_height))
-		pygame.display.set_caption("AlienInvasion")
+		pygame.display.set_caption("AquaBlow")
 
 	def run_game(self):
 		"""Запуск основного цикла игры."""
@@ -27,9 +28,11 @@ class AlienInvasion:
 					sys.exit()
 			# При каждом проходе цикла перерисовывается экран.
 			self.screen.fill(self.settings.bg_color)
+			self.screen.blit(self.bg, (0, 0))
 			# Отображение последнего прорисованного экрана.
 			pygame.display.flip()
+			
 if __name__ == '__main__':
 	# Создание экземпляра и запуск игры.
-	ai = AlienInvasion()
+	ai = AquaBlow()
 	ai.run_game()
