@@ -4,7 +4,8 @@ import pygame
 from settings import Setting
 from ship import Ship
 
-class AquaBlow:
+
+class AlienInvasion:
 	"""Класс для управления ресурсами и поведением игры."""
 
 	def __init__(self):
@@ -12,11 +13,14 @@ class AquaBlow:
 		pygame.init()
 
 		self.settings = Setting()
-		self.bg = pygame.image.load('images/bgr.bmp')
+		self.bg = pygame.image.load('images/bgr.png')
 
-		self.screen = pygame.display.set_mode(
-			(self.settings.screen_width, self.settings.screen_height))
-		pygame.display.set_caption("AquaBlow")
+		# self.screen = pygame.display.set_mode(
+		# 	(self.settings.screen_width, self.settings.screen_height))
+		self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+		self.settings.screen_width = self.screen.get_rect().width
+		self.settings.screen_height = self.screen.get_rect().height
+		pygame.display.set_caption("Alien Invasion")
 		self.ship = Ship(self)
 
 	def run_game(self):
@@ -27,7 +31,8 @@ class AquaBlow:
 			self._update_screen()
 			
 	def _check_events(self):
-		#Отслеживание событий клавиатуры и мыши.
+
+	#Отслеживание событий клавиатуры и мыши.
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
 					sys.exit()
@@ -44,6 +49,8 @@ class AquaBlow:
 					elif event.key == pygame.K_DOWN:
 						#Переместить корабль вниз
 						self.ship.moving_backward = True
+					elif event.key == pygame.K_q:
+						sys.exit()
 				elif event.type == pygame.KEYUP:
 					if event.key == pygame.K_RIGHT:
 						self.ship.moving_right = False
@@ -57,7 +64,7 @@ class AquaBlow:
 	def _update_screen(self):
 		self.screen.fill(self.settings.bg_color)
 		# При каждом проходе цикла перерисовывается экран.
-		self.screen.blit(self.bg, (100, 100))
+		self.screen.blit(self.bg, (0, 0))
 		self.ship.blitme()
 		# Отображение последнего прорисованного экрана.
 		pygame.display.flip()
@@ -65,5 +72,5 @@ class AquaBlow:
 			
 if __name__ == '__main__':
 	# Создание экземпляра и запуск игры.
-	ab = AquaBlow()
-	ab.run_game()
+	ai = AlienInvasion()
+	ai.run_game()

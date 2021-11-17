@@ -10,4 +10,4 @@ class Setting():
 		self.bg_color = (80,230,200)
 
 		#Настройки корбаля
-		self.ship_speed = 1.5
+		self.ship_speed = 20
