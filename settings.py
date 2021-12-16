@@ -1,9 +1,9 @@
 
 class Setting:
-	"""Класс для хранения всех настроек игры"""
+	"""Класс для хранения всех настроек игры."""
 
 	def __init__(self):
-		"""Инициализирует настройки игрыю"""
+		"""Инициализирует настройки игры."""
 		# Параметры экрана
 		self.screen_width = 1280
 		self.screen_height = 720
@@ -18,3 +18,6 @@ class Setting:
 		self.bullet_height = 25
 		self.bullet_color = (80, 190, 230)
 		self.bullet_allowed = 3
+
+		# Настройки пришельцев
+		self.alien_speed = 1.0
