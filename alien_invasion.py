@@ -143,7 +143,6 @@ class AlienInvasion:
 		"""
 		self._check_fleet_edges()
 		self.aliens.update()
-		# Про
 
 	def _update_screen(self):
 		self.screen.fill(self.settings.bg_color)
